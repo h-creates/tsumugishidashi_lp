@@ -105,6 +105,17 @@ ul, ol { list-style: none; }
   line-height: 2;
 }
 
+/* 中央寄せ見出し・説明文の改行を自然に（行の長さを均す／泣き別れを防ぐ） */
+.section__title,
+.lastcta__title,
+.fv__title,
+.photoband__lead { text-wrap: balance; }
+.section__lead,
+.fv__sub,
+.urgent__body,
+.lastcta__body,
+.photoband__sub { text-wrap: pretty; }
+
 /* ---------- ボタン ---------- */
 .btn {
   display: inline-flex;
@@ -435,8 +446,10 @@ ul, ol { list-style: none; }
 /* ---------- 2. 悩み共感 ---------- */
 .empathy { padding-block: 80px; }
 .empathy__head { text-align: center; margin-bottom: 40px; }
-/* 小さめゴシックのリード文＋左右の斜め線（吹き出し風の強調） */
-.empathy__lead {
+/* 明朝のリード文＋左右の細線（見出しの上に置く小見出し）。共通スタイル */
+.empathy__lead,
+.urgent__lead,
+.lastcta__lead {
   display: inline-flex;
   align-items: center;
   gap: 13px;
@@ -446,15 +459,19 @@ ul, ol { list-style: none; }
   color: var(--kincha);
   letter-spacing: 0.1em;
   margin-bottom: 14px;
+  text-wrap: balance;
 }
-.empathy__lead::before,
-.empathy__lead::after {
+.empathy__lead::before, .empathy__lead::after,
+.urgent__lead::before, .urgent__lead::after,
+.lastcta__lead::before, .lastcta__lead::after {
   content: "";
   width: 30px;
   height: 1px;
-  background-color: var(--kincha);
-  opacity: 0.6;
+  background-color: currentColor;
+  opacity: 0.55;
 }
+/* 弔事セクションは緑系の色で */
+.urgent__lead { color: var(--fukamidori); }
 .empathy__list {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
@@ -1342,20 +1359,20 @@ ul, ol { list-style: none; }
     width: 100%;
     height: 75%;
   }
-  .fv__media img { object-position: center 50%; }
+  .fv__media img { object-position: center 50%; filter: brightness(1.07) saturate(1.03); }
   .fv__media::before { display: none; }
   .fv__media::after {
     content: "";
     position: absolute;
     inset: 0;
     z-index: 2;
-    /* 写真の上端を和紙になじませ、下はボヤけさせず鮮明に */
+    /* 写真の上端だけ和紙になじませ、もやは浅めに（写真を広く・明るく見せる） */
     background: linear-gradient(180deg,
       var(--bg-washi) 0%,
-      rgba(250, 246, 236, 0.82) 14%,
-      rgba(250, 246, 236, 0.32) 34%,
-      rgba(250, 246, 236, 0.05) 52%,
-      rgba(250, 246, 236, 0) 72%);
+      rgba(250, 246, 236, 0.8) 11%,
+      rgba(250, 246, 236, 0.28) 27%,
+      rgba(250, 246, 236, 0.04) 42%,
+      rgba(250, 246, 236, 0) 54%);
   }
   .fv__inner {
     position: relative;
@@ -1365,7 +1382,7 @@ ul, ol { list-style: none; }
     text-align: left;
     padding: 30px 22px 40px;
   }
-  .fv__title { font-size: clamp(1.55rem, 4.6vw, 2rem); letter-spacing: 0.12em; line-height: 1.62; }
+  .fv__title { font-size: clamp(1.9rem, 6.2vw, 2.45rem); letter-spacing: 0.1em; line-height: 1.55; }
   .fv__sub { font-size: 0.8rem; letter-spacing: 0.01em; line-height: 1.85; }
   /* 電話・LINEボタンを横並びに。丸との間を大きく開けて写真を見せる */
   .fv__cta { display: flex; flex-wrap: nowrap; gap: 8px; margin-top: 32vh; }
