@@ -383,35 +383,42 @@ ul, ol { list-style: none; }
   color: var(--text);
   margin-bottom: 22px;
 }
-.fv__sub { font-size: 1rem; color: var(--text-soft); margin-bottom: 4px; line-height: 2; letter-spacing: 0.12em; }
+.fv__sub { font-size: 1.1rem; color: var(--text-soft); margin-bottom: 4px; line-height: 2; letter-spacing: 0.1em; }
 .fv__points {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
-  gap: 16px;
+  gap: 14px;
   margin: 28px 0 30px;
-  max-width: 440px;
+  max-width: 408px;
 }
 .fv__points li {
   position: relative;
   aspect-ratio: 1 / 1;
-  /* ベタの濃いめベージュ（金茶寄り）。葉あしらいはやめ、円内に和波を薄く */
-  background: linear-gradient(150deg, #bda069, #a8884f);
+  /* 少しアイボリー寄りの円＋細い金の縁。和波は右下に小さく薄く */
+  background: rgba(250, 246, 237, 0.9);
+  border: 1.5px solid var(--kincha-light);
   border-radius: 50%;
   overflow: hidden;
   display: flex;
   align-items: center;
   justify-content: center;
   text-align: center;
-  box-shadow: 0 4px 12px rgba(70, 50, 30, 0.16);
+  box-shadow: 0 4px 12px rgba(70, 50, 30, 0.12);
   transition: transform 0.22s ease, box-shadow 0.22s ease;
 }
-.fv__points li:hover { transform: translateY(-3px); box-shadow: 0 7px 18px rgba(70, 50, 30, 0.22); }
-/* 円内に和波（青海波）を薄くクリッピング */
+.fv__points li:hover { transform: translateY(-3px); box-shadow: 0 7px 18px rgba(70, 50, 30, 0.18); }
+/* 和波（青海波）を右下に小さく・薄く（全体が見える形で） */
 .fv__points li::after {
   content: "";
   position: absolute;
-  inset: 0;
-  background: url("../public/images/deco/deco-01.png") center bottom / 150% auto no-repeat;
+  right: -4%;
+  bottom: -3%;
+  width: 96%;
+  height: 60%;
+  /* 和波を赤み（えんじ寄り）の暖かいローズで大きめに、右下を埋めるように（ごく薄く） */
+  background-color: #e0a3a3;
+  -webkit-mask: url("../public/images/deco/deco-01.png") right bottom / contain no-repeat;
+  mask: url("../public/images/deco/deco-01.png") right bottom / contain no-repeat;
   opacity: 0.12;
   z-index: 0;
   pointer-events: none;
@@ -419,13 +426,12 @@ ul, ol { list-style: none; }
 .fv__points li span {
   position: relative;
   z-index: 1;
-  font-family: var(--sans);
-  font-size: 0.92rem;
-  font-weight: 700;
-  line-height: 1.55;
+  font-family: var(--serif);
+  font-size: 1.04rem;
+  font-weight: 600;
+  line-height: 1.5;
   letter-spacing: 0.04em;
-  color: #fff;
-  text-shadow: 0 1px 2px rgba(80, 55, 25, 0.28);
+  color: var(--enji);
 }
 .fv__cta { display: flex; flex-wrap: wrap; gap: 12px; }
 .fv__menu-link {
@@ -1074,8 +1080,9 @@ ul, ol { list-style: none; }
   position: absolute;
   left: -10px; bottom: -8px;
   width: 320px; height: 150px;
-  background: url("../public/images/deco/deco-01.png") left bottom / contain no-repeat;
-  opacity: 0.22;
+  /* 丸の和波と被らないよう、左下は和雲に */
+  background: url("../public/images/deco/deco-02.png") left bottom / contain no-repeat;
+  opacity: 0.28;
   z-index: 0;
   pointer-events: none;
 }
@@ -1399,9 +1406,9 @@ ul, ol { list-style: none; }
   }
   .fv__cta .btn .ico { width: 0.95em; height: 0.95em; }
   /* 丸を文字群と同じ横幅にして右端を揃えつつ、間隔を広げて円自体は小さめに */
-  .fv__points { gap: 22px; margin: 24px 0 26px; max-width: none; }
+  .fv__points { gap: 14px; margin: 24px 0 26px; max-width: 90%; }
   .fv__points li { padding-bottom: 2%; }
-  .fv__points li span { font-size: 0.7rem; line-height: 1.45; letter-spacing: 0; }
+  .fv__points li span { font-size: 0.85rem; line-height: 1.5; letter-spacing: 0.02em; }
   .fv__menu-link { display: none; }
 
   /* 文字エリア左上に飛び散りを小さく */
