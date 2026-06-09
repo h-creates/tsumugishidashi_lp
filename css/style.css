@@ -394,30 +394,25 @@ ul, ol { list-style: none; }
 .fv__points li {
   position: relative;
   aspect-ratio: 1 / 1;
-  /* 円をほんの少し明るく（白を薄く重ねる）して沈み込みを軽減 */
-  background-image: linear-gradient(rgba(255, 255, 255, 0.09), rgba(255, 255, 255, 0.09)), url("../public/images/deco/circle-03.png");
-  background-size: cover;
-  background-position: center;
-  background-repeat: no-repeat;
+  /* ベタの濃いめベージュ（金茶寄り）。葉あしらいはやめ、円内に和波を薄く */
+  background: linear-gradient(150deg, #bda069, #a8884f);
   border-radius: 50%;
+  overflow: hidden;
   display: flex;
   align-items: center;
   justify-content: center;
   text-align: center;
-  padding-bottom: 4%;
-  box-shadow: var(--shadow-sm);
+  box-shadow: 0 4px 12px rgba(70, 50, 30, 0.16);
   transition: transform 0.22s ease, box-shadow 0.22s ease;
 }
-.fv__points li:hover { transform: translateY(-3px); box-shadow: var(--shadow); }
-/* 金のリース（deco-20）をやや右下にずらして、葉を右下から覗かせる */
+.fv__points li:hover { transform: translateY(-3px); box-shadow: 0 7px 18px rgba(70, 50, 30, 0.22); }
+/* 円内に和波（青海波）を薄くクリッピング */
 .fv__points li::after {
   content: "";
   position: absolute;
   inset: 0;
-  background: url("../public/images/deco/deco-20.png") no-repeat;
-  background-size: 100% 100%;
-  background-position: center;
-  transform: translate(2%, 0%);
+  background: url("../public/images/deco/deco-01.png") center bottom / 150% auto no-repeat;
+  opacity: 0.12;
   z-index: 0;
   pointer-events: none;
 }
@@ -428,8 +423,9 @@ ul, ol { list-style: none; }
   font-size: 0.92rem;
   font-weight: 700;
   line-height: 1.55;
-  letter-spacing: 0.02em;
-  color: var(--enji);
+  letter-spacing: 0.04em;
+  color: #fff;
+  text-shadow: 0 1px 2px rgba(80, 55, 25, 0.28);
 }
 .fv__cta { display: flex; flex-wrap: wrap; gap: 12px; }
 .fv__menu-link {
