@@ -46,6 +46,8 @@ body {
   font-size: 16px;
   letter-spacing: 0.06em;
   -webkit-font-smoothing: antialiased;
+  /* かな・約物を自然に詰めて、ひらがな/漢字の字間ムラを抑える */
+  font-feature-settings: "palt" 1;
 }
 
 img { display: block; max-width: 100%; height: auto; }
@@ -1387,7 +1389,7 @@ ul, ol { list-style: none; }
     text-align: left;
     padding: 30px 22px 40px;
   }
-  .fv__title { font-size: clamp(2rem, 6.6vw, 2.55rem); letter-spacing: 0.14em; line-height: 1.62; }
+  .fv__title { font-size: clamp(1.95rem, 6.3vw, 2.4rem); letter-spacing: 0.06em; line-height: 1.6; }
   .fv__sub { font-size: 1rem; letter-spacing: 0.06em; line-height: 2; }
   /* 電話・LINEボタンを横並びに。最初の画面内に見えるよう余白は控えめに */
   .fv__cta { display: flex; flex-wrap: nowrap; gap: 8px; margin-top: 15vh; }
