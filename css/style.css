@@ -1432,6 +1432,23 @@ ul, ol { list-style: none; }
   .reason::before { width: 130px; height: 56px; right: -16px; left: auto; }
   .flow::after { width: 150px; height: 72px; right: -22px; }
   .area::before { width: 120px; height: 84px; left: -12px; right: auto; }
+
+  /* リード小見出しはスマホでも1行に収まるよう少し小さく＆細線を短く */
+  .empathy__lead, .urgent__lead, .lastcta__lead {
+    font-size: 1.02rem;
+    gap: 8px;
+    letter-spacing: 0.05em;
+  }
+  .empathy__lead::before, .empathy__lead::after,
+  .urgent__lead::before, .urgent__lead::after,
+  .lastcta__lead::before, .lastcta__lead::after { width: 16px; }
+
+  /* 折り返す見出しはスマホで字間を広げ、詰まり感をなくす */
+  .urgent .section__title,
+  .lastcta__title {
+    letter-spacing: 0.14em;
+    line-height: 1.8;
+  }
 }
 
 @media (max-width: 480px) {
