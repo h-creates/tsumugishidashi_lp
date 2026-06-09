@@ -1,0 +1,20 @@
+# OS / editor / tooling junk
+.DS_Store
+Thumbs.db
+*.swp
+.vscode/
+.claude/
+
+# 制作用ブリーフ（公開サイトには不要。ローカルには残ります）
+tsumugi_shidashi_lp_instruction.md
+
+# Working / source assets (kept locally for editing, excluded from the deploy repo)
+public/images/_source*/
+public/images/**/_source*/
+public/images/_unused/
+public/images/**/_unused/
+
+# Backups / archives
+*.tgz
+*.zip
+*.bak
