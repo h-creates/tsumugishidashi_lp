@@ -106,4 +106,23 @@
   } else {
     targets.forEach(function (el) { el.classList.add("is-visible"); });
   }
+
+  /* ----- 固定CTA：FVを過ぎたら表示、トップに戻ったら隠す ----- */
+  var fixedCta = document.querySelector(".fixed-cta");
+  var fv = document.querySelector(".fv");
+  if (fixedCta && fv && "IntersectionObserver" in window) {
+    var ctaObserver = new IntersectionObserver(
+      function (entries) {
+        entries.forEach(function (entry) {
+          // FVが画面から完全に外れたら固定CTAを出す
+          if (entry.isIntersecting) fixedCta.classList.remove("is-visible");
+          else fixedCta.classList.add("is-visible");
+        });
+      },
+      { threshold: 0 }
+    );
+    ctaObserver.observe(fv);
+  } else if (fixedCta) {
+    fixedCta.classList.add("is-visible");
+  }
 })();
